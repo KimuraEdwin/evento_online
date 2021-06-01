@@ -1,0 +1,104 @@
+/* Reset */
+.et-vmmv-slider button{ border: none; padding: 0; background: transparent; }
+.et-vmmv-slider button:focus{ outline: none; }
+.et-vmmv-slider ul, .et-vmmv-slider li{
+  margin: 0; padding: 0; list-style: none;
+}
+
+/* Container */
+.et-vmmv-slider{
+  width: 100%;;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image Lists + Images */
+.et-vmmv-slides-container{
+  transition: transform 500ms ease;
+  display: inline-flex;
+}
+.et-vmmv-slides-container.sliding{ /* TODO: Styles for sliding */ }
+
+
+.et-vmmv-slides-container.no-transition,
+.et-vmmv-slides-container.no-transition li,
+.et-vmmv-slides-container.no-transition img{
+  transition: none !important;
+}
+.et-vwmv-slider-imgs{ 
+  display: inline-flex; 
+  cursor: pointer;
+}
+.et-vwmv-slider-imgs:active{ cursor: grabbing;}
+.et-vwmv-slider-imgs li{ 
+  display: block;
+  padding: 0;
+  transition: all 325ms ease;
+  transform-origin: right;
+}
+@media (max-width:924px){
+  .et-vmmv-slider img{ transform-origin: bottom center; }
+}
+.et-vmmv-slider img{ 
+  display: block; 
+  box-shadow: 0px 6px 20px -4px rgba(0,0,0,0);
+  transition: z-index 0ms linear, box-shadow 150ms linear, transform 325ms ease;
+  transform-origin: bottom right;
+}
+@media (max-width:924px){
+  .et-vmmv-slider img{ transform-origin: bottom center; }
+}
+.et-vwmv-slider-imgs li:hover img{
+  box-shadow: 0px 9px 25px -4px rgba(0,0,0,0.3);
+  /*
+  transform: scale(1.02);
+  transform-origin: bottom;
+  */
+}
+
+/* Navigation */
+.et-vwmv-slider-nav li{  display: inline-block; margin: 0; }
+.et-vmmv-slider .et-vwmv-slider-nav{ 
+    margin: -5px 0 5px 0;
+    text-align: center;
+    clear: both;
+    background-color: rgba(0,0,0,0.3);
+}
+.et-vwmv-slider-nav button{ padding: 12px 2px; }
+
+.et-vwmv-slider-nav button span{
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #D3D3D3;
+  background: #f5f5f5;
+  transition: all 150ms ease;
+  display: block;
+  margin-left: 1px;
+  width: 9px;
+  height: 9px;
+  padding: 0;
+}
+@media (max-width:925px){
+  .et-vmmv-slider .et-vwmv-slider-nav{ 
+    margin: 5px 0 24px 0;
+  }
+  .et-vwmv-slider-nav button span{
+    border: 1px solid #D3D3D3;
+  }
+  .et-vwmv-slider-nav button span{
+    width: 11px;
+    height: 11px;
+    margin-left: -1px;
+  }
+}
+.et-vwmv-slider-nav .active button span{
+  border-color: #FDBF4C;
+  background: #FDBF4C;
+}
+@media (min-width: 925px){
+  .et-vwmv-slider-nav button:hover span{
+    border-color: #FDBF4C;
+    background: #FDBF4C;
+    transition: all 150ms ease;
+  }
+}
