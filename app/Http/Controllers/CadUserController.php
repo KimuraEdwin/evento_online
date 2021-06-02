@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class CadUserController extends Controller
 {
+    public $ufs = ['AC','AL','AP','AM','BA','CE','DF','ES','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'];
+    public $tipoCredenciais = [1,2];
 
     public function __construct(CadUser $cadUser){
         $this->cadUser = $cadUser;
@@ -18,7 +20,7 @@ class CadUserController extends Controller
      */
     public function index()
     {
-        return view('caduser.create');
+        return view('caduser.index');
     }
 
     /**
@@ -28,7 +30,7 @@ class CadUserController extends Controller
      */
     public function create()
     {
-        return view('caduser.create');
+        return view('caduser.create',['ufs' => $this->ufs, 'tipoCredenciais' => $this->tipoCredenciais]);
     }
 
     /**
@@ -42,7 +44,7 @@ class CadUserController extends Controller
         $dados = $request->all();
         $dados['user_id'] = $request->user()->getAttributes()['id'];
         $usuarioCadastrado = $this->cadUser->create($dados);
-        dd($usuarioCadastrado);
+        return redirect()->route('index');
     }
 
     /**
@@ -65,9 +67,7 @@ class CadUserController extends Controller
     public function edit($id)
     {
         $regCadUser = $this->cadUser->find($id);
-        $ufs = ['AC','AL','AP','AM','BA','CE','DF','ES','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'];
-        $tipoCredenciais = [1,2];
-        return view('caduser.edit', ['caduser' => $regCadUser, 'ufs' => $ufs, 'tipoCredenciais' => $tipoCredenciais]);
+        return view('caduser.edit', ['caduser' => $regCadUser, 'ufs' => $this->$ufs, 'tipoCredenciais' => $this->$tipoCredenciais]);
     }
 
     /**

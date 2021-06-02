@@ -67,7 +67,7 @@
                                 <a href="{{ route('index') }}" class="nav-link text-white">Lobby</a>
                             </li>
 
-                            @if(CadUser::find(Auth::user()->id)->tipo_credencial == 1)
+                            @if( (CadUser::find(Auth::user()->id) != null) && (CadUser::find(Auth::user()->id)->tipo_credencial == 1))
                                 <li class="nav-item">
                                     <a href="{{ route('gerencia.index') }}" class="nav-link text-white" >Gerenciar Evento</a>
                                 </li>
